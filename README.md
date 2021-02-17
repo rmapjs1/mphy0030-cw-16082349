@@ -2,6 +2,6 @@
 
 The coursework is compromised of two parts.
 
-## Part 1
+## Part 1 - Independent Tasks
 
-## Part 2
+## Part 2 - Spatial Data Augmentation using a Gaussian Spline
