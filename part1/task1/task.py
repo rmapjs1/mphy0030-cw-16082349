@@ -82,4 +82,17 @@ if __name__ == '__main__':
     image_size, voxdims, vol = simple_image_read(binary_path)
 
     # plot 3 images at different z-coordinates
+    z_coords = [10, 15, 20]
+    figure, axis = plt.subplots(1, 3)
+    for i, z_val in enumerate(z_coords):
+         axis[i].imshow(vol[:, :, z_val])
+         axis[i].set_title('z-coordinate = ' + str(z_val), fontsize = 9)
+
+    figure.suptitle('Images at 3 different z-coordinates', fontsize = 12, y = 0.8)  # set the overall title
     
+    # display the figures
+    plt.show()
+    # save the figures as png 
+    plt.savefig('different_z_images.png')
+    
+
