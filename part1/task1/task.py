@@ -67,12 +67,19 @@ def simple_image_read(path):
     return image_size, voxdims, vol
 
 
+# the following will only be executed if this file in particular is run (in directory /part1/task1)
+if __name__ == '__main__':
 
-# 1. Load an example image in mat file, "data/example_image.mat"
-# note: image contains a 3D image volume (vol) and its voxel dimensions (voxdims)
+    # load an example image in mat file
+    image_path = '../../data/example_image.mat'
+    image_data = loadmat(image_path)
 
-# 2. write image into file "data/image.sim" using simple_image_write fcn
+    # write image into a binary file
+    binary_path = '../../data/image.sim'
+    simple_image_write(image_data, binary_path)
 
-# 3. read file "data/image.sim" using simple_image_read fcn
+    # read the binary file
+    image_size, voxdims, vol = simple_image_read(binary_path)
 
-# 4. plot 3 images at different z-coordinates
+    # plot 3 images at different z-coordinates
+    
