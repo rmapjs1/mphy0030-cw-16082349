@@ -14,10 +14,10 @@ def simple_image_write(data, path):
     '''
     This function writes 3D medical images into binary files
 
-    Paramters:
+    Paramters
     ----------
-    data: data from 3D medical image read in from mat file
-    path (string): filepath where the image will be saved
+    - data: data from 3D medical image read in from mat file
+    - path (string): filepath where the image will be saved
     '''
 
     # get image parameters: 3D image volume (vol) and its voxel dimensions (voxdims)
@@ -40,14 +40,31 @@ def simple_image_write(data, path):
         np.save(binary_file, image_info, allow_pickle = True)
 
 
+# function: low-level file reading  --> reads 3D medical images (binary)
+def simple_image_read(path):
+    '''
+    This function reads in medical images stored as binary files
 
+    Paramters
+    ---------
+    - path (string): filepath to the binary image
 
+    Returns
+    -------
+    - image_size: image size (3x1 array)
+    - voxdims: voxel dimensions (3x1 array)
+    - vol: voxel intensity values (array)
+    '''
 
+    # read binary image file
+    with open(path, 'rb') as binary_file:
+        data = (np.load(binary_file, allow_pickle= True)).item()
 
-# function: low-level file reading  --> reads 3D medical images
+        image_size = data['header']['image_size']
+        voxdims = data['header']['voxdims']
+        vol = data['volume']
 
-
-
+    return image_size, voxdims, vol
 
 
 
